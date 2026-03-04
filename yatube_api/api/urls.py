@@ -10,21 +10,21 @@ router.register(r'groups', GroupViewSet, basename='group')
 urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api-token-auth'),
     path('', include(router.urls)),
-    
+
     # Nested comments endpoint
-    path('posts/<int:post_id>/comments/', 
+    path('posts/<int:post_id>/comments/',
          CommentViewSet.as_view({
              'get': 'list',
              'post': 'create'
-         }), 
+         }),
          name='post-comments'),
-    
-    path('posts/<int:post_id>/comments/<int:pk>/', 
+
+    path('posts/<int:post_id>/comments/<int:pk>/',
          CommentViewSet.as_view({
              'get': 'retrieve',
              'put': 'update',
              'patch': 'partial_update',
              'delete': 'destroy'
-         }), 
+         }),
          name='post-comments-detail'),
 ]

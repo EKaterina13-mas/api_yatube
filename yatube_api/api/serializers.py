@@ -4,7 +4,7 @@ from posts.models import Post, Group, Comment
 
 class GroupSerializer(serializers.ModelSerializer):
     """Serializer for Group model"""
-    
+
     class Meta:
         model = Group
         fields = ('id', 'title', 'slug', 'description')
@@ -17,7 +17,7 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username'
     )
-    
+
     class Meta:
         model = Comment
         fields = ('id', 'author', 'text', 'created', 'post')
@@ -35,7 +35,7 @@ class PostSerializer(serializers.ModelSerializer):
         required=False,
         allow_null=True
     )
-    
+
     class Meta:
         model = Post
         fields = ('id', 'text', 'author', 'image', 'group', 'pub_date')
